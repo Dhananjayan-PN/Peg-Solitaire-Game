@@ -69,7 +69,7 @@ def count_pegs_remaining(board):
 def count_moves_available(board):
     cnt = 0
     for i in range(1, len(board) + 1):
-        for j in range(1, len(board[0])):
+        for j in range(1, len(board[0]) + 1):
             for k in range(1, 5):
                 if is_valid_move(board, i, j, k):
                     cnt += 1
@@ -82,12 +82,12 @@ def read_valid_move(board):
     row = read_valid_int(
         "Choose the ROW of a peg you'd like to move: ", 1, len(board))
     direction = read_valid_int(
-        "Choose a DIRECTION to move that peg 1) UP, 2) DOWN, 3) LEFT, or 4) RIGHT:", 1, 4)
+        "Choose a DIRECTION to move that peg 1) UP, 2) DOWN, 3) LEFT, or 4) RIGHT: ", 1, 4)
     if is_valid_move(board, row, column, direction):
         return column, row, direction
     else:
         directionString = 'UP' if direction == 1 else 'DOWN' if direction == 2 else 'LEFT' if direction == 3 else 'RIGHT'
-        print('Moving a peg from row {} and column {} {} is not currently a legal move.'.format(
+        print('Moving a peg from row {} and column {} {} is not currently a legal move.\n'.format(
             row, column, directionString))
         return read_valid_move(board)
 
@@ -174,15 +174,17 @@ def main():
     board = create_board(board_type)
     while True:
         display_board(board)
-        column, row, direction = read_valid_move(board)
-        board = perform_move(board, row, column, direction)
-        if count_moves_available(board) == 0:
-            print('It looks like there are no more legal moves.  Please try again.')
-            break
         if count_pegs_remaining(board) == 1:
             print('Congrats, you won!')
             break
-    print('==========================================')
+        elif count_moves_available(board) == 0:
+            print('It looks like there are no more legal moves.  Please try again.')
+            break
+        else:
+            pass
+        column, row, direction = read_valid_move(board)
+        board = perform_move(board, row, column, direction)
+    print('\n==========================================')
     print('THANK YOU FOR PLAYING CS300 PEG SOLITAIRE!')
 
 
