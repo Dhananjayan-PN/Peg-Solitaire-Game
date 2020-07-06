@@ -42,7 +42,7 @@ def perform_move(board, row, column, direction):
             board[row - 2][column - 1] = '-'
             board[row - 3][column - 1] = '@'
         elif direction == 2:
-            board[row][column - 1] == '-'
+            board[row][column - 1] = '-'
             board[row + 1][column - 1] = '@'
         elif direction == 3:
             board[row - 1][column - 2] = '-'
