@@ -1,2 +1,2 @@
 # Peg-Solitaire-Game
-A Peg Solitaire Game in Python
+A Simple CLI Peg Solitaire Game written in Python
