@@ -181,9 +181,8 @@ def main():
             print('It looks like there are no more legal moves.  Please try again.')
             break
         else:
-            pass
-        column, row, direction = read_valid_move(board)
-        board = perform_move(board, row, column, direction)
+            column, row, direction = read_valid_move(board)
+            board = perform_move(board, row, column, direction)
     print('\n==========================================')
     print('THANK YOU FOR PLAYING CS300 PEG SOLITAIRE!')
 
